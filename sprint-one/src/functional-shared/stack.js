@@ -1,8 +1,30 @@
 var Stack = function() {
-  // Hey! Rewrite in the new style. Your code will wind up looking very similar,
-  // but try not not reference your old code in writing the new style.
+    var storage = {};
+      _.extend(storage, queueMethods);
+
+    // Implement the methods below
+    push : function(value) {
+    var keys = Object.keys(storage);
+    storage[keys.length] = value;
+    return storage;
+  },
+
+    pop : function() {
+    var keys = Object.keys(storage);
+      if(keys.length !== 0){
+      var lastKey = [keys.length-1];
+      var lastKeyValue = storage[lastKey];
+        delete storage[lastKey];
+        return lastKeyValue;
+      }
+    },
+
+    size : function() {
+      var keys = Object.keys(storage);
+        return keys.length;
+    }
+  };
+
 };
 
 var stackMethods = {};
-
-

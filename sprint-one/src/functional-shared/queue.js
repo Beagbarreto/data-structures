@@ -1,20 +1,25 @@
 var Queue = function() {
-  var storage = {};
-  storage.first = 0;
-  storage.last = 0;
-_.extend(storage, queueMethods);
+  var storage = {
+  first : 0,
+  last : 0,
+  newStorage : {}
+};
+  _.extend(storage, queueMethods);
+
 return storage;
+
   };
 
 var queueMethods = {
+  
   enqueue : function(value) {
-    this.storage[this.first] = value;
+    this.newStorage[this.first] = value;
     this.first++;
   },
 
   dequeue : function() {
-    var out = this.storage[this.last];
-    delete this.storage[this.last];
+    var out = this.newStorage[this.last];
+    delete this.newStorage[this.last];
     this.last++;
     return out;
   },
